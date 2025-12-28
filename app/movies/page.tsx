@@ -23,7 +23,7 @@ export default async function MoviesPageRoute() {
   // Get movies for top 5 genres
   const topGenres = genres.slice(0, 5);
   const genreMovies = await Promise.all(
-    topGenres.map((genre) =>
+    topGenres.map((genre: { id: number; name: string }) =>
       getMoviesByGenre(genre.id).then((data) => ({
         genreId: genre.id,
         genreName: genre.name,
@@ -43,4 +43,3 @@ export default async function MoviesPageRoute() {
     />
   );
 }
-
